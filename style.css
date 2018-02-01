@@ -14,12 +14,22 @@ div {
   color: white;
 }
 
+p {
+  color: white;
+  margin: auto;
+  text-align: center;
+  margin-top: 35px;
+}
+
 .wrapper {
   padding: 20px;
   display: grid;
   margin: auto;
-  width: 290px;
+  width: 270px;
   grid-template-columns: repeat(3, 90px);
   grid-template-rows: repeat(3, 90px);
-  grid-gap: 10px;
+}
+
+.wrapper > div {
+  border: 2px solid white;
 }
