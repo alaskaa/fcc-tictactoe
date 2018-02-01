@@ -1,0 +1,25 @@
+html {
+  background-color: gray;
+}
+
+h1 {
+  color: white;
+  font-family: "Arial";
+  margin: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+div {
+  color: white;
+}
+
+.wrapper {
+  padding: 20px;
+  display: grid;
+  margin: auto;
+  width: 290px;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(3, 90px);
+  grid-gap: 10px;
+}
