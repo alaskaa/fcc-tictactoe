@@ -4,7 +4,7 @@ html {
 
 h1 {
   color: white;
-  font-family: "Arial";
+  font-family: 'Titillium Web', sans-serif;
   margin: auto;
   text-align: center;
   padding: 20px;
@@ -19,6 +19,7 @@ p {
   margin: auto;
   text-align: center;
   margin-top: 35px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .wrapper {
@@ -32,4 +33,18 @@ p {
 
 .wrapper > div {
   border: 2px solid white;
+}
+
+.centered-text {
+  color: white;
+  margin: auto;
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+button {
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  font-family: 'Titillium Web', sans-serif;
 }
