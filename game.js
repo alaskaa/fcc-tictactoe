@@ -52,6 +52,8 @@ function calcMiniMax(board, aiPlayer) {
   // get the free board spaces that are not taken up so far
   var freeSpaces = calculateFreeSpaces(board);
 
+  
+
 
 }
 
@@ -59,12 +61,64 @@ function calcMiniMax(board, aiPlayer) {
 
 // Game logic
 
-// Get X or Y
+// Cell setup (could be refactored out later)
+function completeSetup() {
+document.getElementById("one").onclick = () => {
+  var p = document.getElementById("one").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("two").onclick = () => {
+  var p = document.getElementById("two").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("three").onclick = () => {
+  var p = document.getElementById("three").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("four").onclick = () => {
+  var p = document.getElementById("four").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("five").onclick = () => {
+  var p = document.getElementById("five").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("six").onclick = () => {
+  var p = document.getElementById("six").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("seven").onclick = () => {
+  var p = document.getElementById("seven").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("eight").onclick = () => {
+  var p = document.getElementById("eight").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+document.getElementById("nine").onclick = () => {
+  var p = document.getElementById("nine").childNodes;
+  p[0].innerHTML = humanPlayer;
+  console.log(p);
+}
+}
+
+
+
+// Lets human Player decide whether he wants to play as X or O
   document.getElementById('crosses').onclick = function() {
      if(selected === false) {
        setPlayerChoice("X");
        console.log(humanPlayer, aiPlayer);
        selected = true;
+       completeSetup();
      }
   };
 
@@ -73,7 +127,6 @@ function calcMiniMax(board, aiPlayer) {
      setPlayerChoice("O");
      console.log(humanPlayer, aiPlayer);
      selected = true;
+     completeSetup();
    }
   };
-
-  
