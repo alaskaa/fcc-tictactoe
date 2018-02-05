@@ -47,15 +47,39 @@ function winStateReached(board, symbol) {
 }
 
 
-function calcMiniMax(board, aiPlayer) {
+// AI Player is the maximiser and humanPlayer is the minimiser
+function calcMiniMax(board, depth, isMaximizingPlayer) {
 
   // get the free board spaces that are not taken up so far
   var freeSpaces = calculateFreeSpaces(board);
 
-  
+  //if(current board state is a terminal state) {
+  //  return value of the board;
+  // }
 
+    // returns the best move for the players
+
+    if(isMaximizingPlayer === true) { // so aiPlayer is playing
+        var bestValue = -1000;        // set to very low number
+        for(var move of freeSpaces) {
+            var value = calcMiniMax(freeSpaces, depth+1, false);
+            bestValue = Math.max(bestValue, value);
+        }
+        return bestValue;
+
+
+    } else {    // so humanPlayer is playing
+        var bestValue = +1000;
+        for(var move in freeSpaces) {
+            var value = calcMiniMax(freeSpaces, depth+1, true);
+            bestValue = Math.min(bestValue, value);
+        }
+        return bestValue;
+    }
 
 }
+
+
 
 
 
