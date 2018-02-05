@@ -79,6 +79,11 @@ function calcMiniMax(board, depth, isMaximizingPlayer) {
 
 }
 
+function findBestMove(board) {
+  for(var cell in board) {
+    var bestMove = minimax(); // continue here
+  }
+}
 
 
 
