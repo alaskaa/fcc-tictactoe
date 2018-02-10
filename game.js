@@ -118,7 +118,7 @@ function bestCell() {
   return calcMiniMax(board, aiPlayer).index;
 }
 
-function hello() {
+function aiPlayerTurn() {
   var best = bestCell();
   board[best] = aiPlayer;
   var div = document.getElementById("grid").children;
@@ -127,13 +127,6 @@ function hello() {
   p[0].innerHTML = aiPlayer;
 }
 
-
-
-
-
-
-
-// Game logic
 
 // Cell setup (could be refactored out later)
 function completeSetup() {
@@ -222,7 +215,3 @@ document.getElementById("nine").onclick = () => {
      completeSetup();
    }
   };
-
-// Player 1 starts and places something
-
-// Ai player's go
