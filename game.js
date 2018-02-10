@@ -7,6 +7,8 @@ var board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var humanPlayer = "";
 var aiPlayer = "";
 var selected = false;
+var globNum;
+//var score = 0;
 
 
 // the human player selects his choice of symbol
@@ -28,7 +30,7 @@ function calculateFreeSpaces() {
 
 // function that returns a boolean whether a wining state has been reached
 // takes in a board and a symbol that corressponds to the player
-function winStateReached(symbol) {
+function winStateReached(board, symbol) {
 
   if (
     (board[0] == symbol && board[4] == symbol && board[8] == symbol) ||
@@ -50,57 +52,83 @@ function winStateReached(symbol) {
 
 
 // AI Player is the maximiser and humanPlayer is the minimiser
-function calcMiniMax(board, isMaximizingPlayer, symbol) { // depth
+function calcMiniMax(newBoard, symbol) {
 
-  // get the free board spaces that are not taken up so far
-  //var freeSpaces = calculateFreeSpaces(); // board
+  var freeSpaces = calculateFreeSpaces(newBoard);
 
-  if(winStateReached(symbol) === true) {
-    console.log("You win!");
+  if(winStateReached(newBoard, humanPlayer) === true) {
+    //score = -10; // If human wins, the Ai Player gets minus points
+    return {score: -10};
+
+  } else if(winStateReached(newBoard, aiPlayer) === true) {
+    //score = 10;
+    return {score: 10};
+
+  } else if (freeSpaces.length === 0) {
+    //score = 0;
+    return {score: 0};
   }
 
-  else {
-    // returns the best move for the players
-
-    if(isMaximizingPlayer === true) { // so aiPlayer is playing
-        var bestValue = -1000;        // set to very low number
-        for(var move of board) {
-            var value_arr = [];
-            value_arr.push(calcMiniMax(board, false, symbol)); //depth+1, false);
-
-        }
-        bestValue = Math.max(... value_arr);
-        return bestValue;
+   var moves = [];
 
 
-    } else {    // so humanPlayer is playing
-        var bestValue = +1000;
-        for(var move in board) {
-            var value_arr = [];
-            value_arr.push(calcMiniMax(board, true, symbol));
+    for(var i = 0; i < freeSpaces.length; i++) {
+      var newMove = {};
+      newMove.index = newBoard[freeSpaces[i]];
+      newBoard[freeSpaces[i]] = symbol;
 
-        }
-        bestValue = Math.min(... value_arr);
-        return bestValue;
+
+      if(symbol === aiPlayer) {
+        var s = calcMiniMax(newBoard, humanPlayer);
+        newMove.score = s.score;
+
+      } else {    // so humanPlayer is playing
+        var s = calcMiniMax(newBoard, aiPlayer);
+        newMove.score = s.score;
+      }
+
+      newBoard[freeSpaces[i]] = newMove.index;
+      moves.push(newMove);
     }
-  }
+
+    var optimalMove;
+    if(symbol === aiPlayer) {
+      var bestValue = -1000;
+      for(var i = 0; i < moves.length; i++) {
+        if(moves[i].score > bestValue) {
+          bestValue = moves[i].score;
+          optimalMove = i;
+        }
+      }
+    } else { //if(symbol === humanPlayer) {
+      var bestValue = 1000;
+      for (var i = 0; i < moves.length; i++) {
+        if(moves[i].score < bestValue) {
+          bestValue = moves[i].score;
+          optimalMove = i;
+        }
+      }
+    }
+    //console.log(optimalMove);
+  return moves[optimalMove];
 
 }
 
-function findBestMove(board, aiPlayer) {
-  var bestValue = -1000;
-  var bestMove;
-  for(var cell in board) {
-    var someMoveValue = calcMiniMax(board, true, aiPlayer); // continue here
-    if(someMoveValue > bestValue) {
-      bestValue = someMoveValue;
-      bestMove = cell;
-    }
-   board[bestMove] = aiPlayer;
-  }
-
-
+function bestCell() {
+  return calcMiniMax(board, aiPlayer).index;
 }
+
+function hello() {
+  var best = bestCell();
+  board[best] = aiPlayer;
+  var div = document.getElementById("grid").children;
+  console.log(div);
+  var p = div[best].childNodes;
+  p[0].innerHTML = aiPlayer;
+}
+
+
+
 
 
 
