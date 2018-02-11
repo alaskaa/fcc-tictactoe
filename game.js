@@ -11,6 +11,7 @@ var aiPlayerTurns = 0;
 
 
 
+
 // the human player selects his choice of symbol
 function setPlayerChoice(symbol) {
   if(symbol == "X") {
@@ -123,6 +124,7 @@ function aiPlayerTurn() {
   console.log(div);
   var p = div[best].childNodes;
   p[0].innerHTML = aiPlayer;
+  p[0].classList.remove("empty");
 }
 
 
@@ -150,6 +152,7 @@ function reset() {
     var div = document.getElementById("grid").children;
     var p = div[i].childNodes;
     p[0].innerHTML = "";
+    p[0].className = "empty";
     aiPlayerTurns = 0;
     setTimeout(function() { document.getElementById("message").innerHTML = ""; }, 1000);
     //document.getElementById("message").innerHTML = "";
@@ -160,7 +163,9 @@ function reset() {
 // Cell setup (could be refactored out later)
 function completeSetup() {
 document.getElementById("one").onclick = () => {
+
   var p = document.getElementById("one").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[0] = humanPlayer;
@@ -172,9 +177,13 @@ document.getElementById("one").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
+
 }
 document.getElementById("two").onclick = () => {
   var p = document.getElementById("two").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[1] = humanPlayer;
@@ -186,9 +195,12 @@ document.getElementById("two").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("three").onclick = () => {
   var p = document.getElementById("three").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[2] = humanPlayer;
@@ -200,9 +212,12 @@ document.getElementById("three").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("four").onclick = () => {
   var p = document.getElementById("four").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[3] = humanPlayer;
@@ -214,9 +229,12 @@ document.getElementById("four").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("five").onclick = () => {
   var p = document.getElementById("five").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[4] = humanPlayer;
@@ -228,9 +246,12 @@ document.getElementById("five").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("six").onclick = () => {
   var p = document.getElementById("six").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[5] = humanPlayer;
@@ -242,9 +263,12 @@ document.getElementById("six").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("seven").onclick = () => {
   var p = document.getElementById("seven").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[6] = humanPlayer;
@@ -256,9 +280,12 @@ document.getElementById("seven").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("eight").onclick = () => {
   var p = document.getElementById("eight").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[7] = humanPlayer;
@@ -270,9 +297,12 @@ document.getElementById("eight").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 document.getElementById("nine").onclick = () => {
   var p = document.getElementById("nine").childNodes;
+  if(p[0].className === "empty") {
   p[0].innerHTML = humanPlayer;
   console.log(p);
   board[8] = humanPlayer;
@@ -284,6 +314,8 @@ document.getElementById("nine").onclick = () => {
     console.log("Game has finished");
   }
   setTimeout(function() { clearBoard(); }, 500);
+  p[0].classList.remove("empty");
+  }
 }
 }
 
