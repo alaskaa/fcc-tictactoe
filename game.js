@@ -7,8 +7,8 @@ var board = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 var humanPlayer = "";
 var aiPlayer = "";
 var selected = false;
-var globNum;
-//var score = 0;
+var aiPlayerTurns = 0;
+
 
 
 // the human player selects his choice of symbol
@@ -57,7 +57,6 @@ function calcMiniMax(newBoard, symbol) {
   var freeSpaces = calculateFreeSpaces(newBoard);
 
   if(winStateReached(newBoard, humanPlayer) === true) {
-    //score = -10; // If human wins, the Ai Player gets minus points
     return {score: -10};
 
   } else if(winStateReached(newBoard, aiPlayer) === true) {
@@ -70,7 +69,6 @@ function calcMiniMax(newBoard, symbol) {
   }
 
    var moves = [];
-
 
     for(var i = 0; i < freeSpaces.length; i++) {
       var newMove = {};
@@ -128,6 +126,37 @@ function aiPlayerTurn() {
 }
 
 
+function isXorO(elem){
+  if((elem === "X") || (elem === "O")) {
+    return elem;
+  }
+}
+
+function clearBoard() {
+  var allSymbols = board.every(isXorO);
+  console.log(allSymbols);
+  if((winStateReached(board,aiPlayer) === true)) {
+    reset();
+    document.getElementById("message").innerHTML = "You lose!";
+  } else if(allSymbols === true) {
+    reset();
+    document.getElementById("message").innerHTML = "It's a draw!";
+  }
+}
+
+function reset() {
+  board = [0,1,2,3,4,5,6,7,8];
+  for(var i = 0; i < document.getElementById("grid").children.length; i++) {
+    var div = document.getElementById("grid").children;
+    var p = div[i].childNodes;
+    p[0].innerHTML = "";
+    aiPlayerTurns = 0;
+    setTimeout(function() { document.getElementById("message").innerHTML = ""; }, 1000);
+    //document.getElementById("message").innerHTML = "";
+  }
+}
+
+
 // Cell setup (could be refactored out later)
 function completeSetup() {
 document.getElementById("one").onclick = () => {
@@ -136,6 +165,13 @@ document.getElementById("one").onclick = () => {
   console.log(p);
   board[0] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("two").onclick = () => {
   var p = document.getElementById("two").childNodes;
@@ -143,6 +179,13 @@ document.getElementById("two").onclick = () => {
   console.log(p);
   board[1] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("three").onclick = () => {
   var p = document.getElementById("three").childNodes;
@@ -150,6 +193,13 @@ document.getElementById("three").onclick = () => {
   console.log(p);
   board[2] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("four").onclick = () => {
   var p = document.getElementById("four").childNodes;
@@ -157,6 +207,13 @@ document.getElementById("four").onclick = () => {
   console.log(p);
   board[3] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("five").onclick = () => {
   var p = document.getElementById("five").childNodes;
@@ -164,6 +221,13 @@ document.getElementById("five").onclick = () => {
   console.log(p);
   board[4] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("six").onclick = () => {
   var p = document.getElementById("six").childNodes;
@@ -171,6 +235,13 @@ document.getElementById("six").onclick = () => {
   console.log(p);
   board[5] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("seven").onclick = () => {
   var p = document.getElementById("seven").childNodes;
@@ -178,6 +249,13 @@ document.getElementById("seven").onclick = () => {
   console.log(p);
   board[6] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("eight").onclick = () => {
   var p = document.getElementById("eight").childNodes;
@@ -185,6 +263,13 @@ document.getElementById("eight").onclick = () => {
   console.log(p);
   board[7] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 document.getElementById("nine").onclick = () => {
   var p = document.getElementById("nine").childNodes;
@@ -192,6 +277,13 @@ document.getElementById("nine").onclick = () => {
   console.log(p);
   board[8] = humanPlayer;
   console.log(board);
+  if (aiPlayerTurns < 4) {
+    aiPlayerTurn();
+    aiPlayerTurns++;
+  } else {
+    console.log("Game has finished");
+  }
+  setTimeout(function() { clearBoard(); }, 500);
 }
 }
 
