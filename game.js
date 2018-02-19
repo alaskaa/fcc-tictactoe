@@ -55,6 +55,8 @@ function winStateReached(board, symbol) {
 // AI Player is the maximiser and humanPlayer is the minimiser
 function calcMiniMax(newBoard, symbol) {
 
+  // scoring object idea taken from online to account for taking index of score
+
   var freeSpaces = calculateFreeSpaces(newBoard);
 
   if(winStateReached(newBoard, humanPlayer) === true) {
